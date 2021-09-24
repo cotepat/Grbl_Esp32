@@ -67,7 +67,7 @@
 #endif
 
 #ifndef DEFAULT_INVERT_LIMIT_PINS
-#    define DEFAULT_INVERT_LIMIT_PINS 1  // $5 boolean
+#    define DEFAULT_INVERT_LIMIT_PINS 0  // $5 boolean
 #endif
 
 #ifndef DEFAULT_INVERT_PROBE_PIN
