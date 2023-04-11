@@ -142,8 +142,8 @@ Socket #5
 #    define DEFAULT_Z_ACCELERATION 	400
 
 // ========= AXIS MAX TRAVEL ============
-#    define DEFAULT_X_MAX_TRAVEL 	533
-#    define DEFAULT_Y_MAX_TRAVEL 	788
+#    define DEFAULT_X_MAX_TRAVEL 	531
+#    define DEFAULT_Y_MAX_TRAVEL 	786
 #    define DEFAULT_Z_MAX_TRAVEL 	100
 #    define DEFAULT_X_HOMING_MPOS   2.0
 #    define DEFAULT_Y_HOMING_MPOS   2.0
