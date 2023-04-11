@@ -9,7 +9,7 @@
 // I2S (steppers & other output-only pins)
 #define USE_I2S_OUT
 #define USE_I2S_STEPS
-//#define DEFAULT_STEPPER ST_I2S_STATIC
+#define DEFAULT_STEPPER ST_I2S_STATIC
 
 //#define USE_STEPSTICK   // makes sure MS1,2,3 !reset and !sleep are set
 
@@ -82,14 +82,15 @@ Socket #5
 
 // 4x Switch Input module  in socket #2
 // // https://github.com/bdring/6-Pack_CNC_Controller/wiki/4x-Switch-Input-module
-#define CONTROL_FEED_HOLD_PIN   GPIO_NUM_2   // labeled Hold
-#define MACRO_BUTTON_0_PIN		GPIO_NUM_25
-#define MACRO_BUTTON_1_PIN		GPIO_NUM_39
-#define MACRO_BUTTON_2_PIN		GPIO_NUM_36
+#define MACRO_BUTTON_0_PIN      GPIO_NUM_2   // labeled Hold
+#define MACRO_BUTTON_1_PIN		GPIO_NUM_25
+#define MACRO_BUTTON_2_PIN		GPIO_NUM_39
+#define MACRO_BUTTON_3_PIN		GPIO_NUM_36
 
 // 0-10V Outpur Module used in socket #3
 // https://github.com/bdring/6-Pack_CNC_Controller/wiki/0-10V-Output-Module
 #define SPINDLE_OUTPUT_PIN      GPIO_NUM_26
+#define LASER_OUTPUT_PIN        GPIO_NUM_14
 
 // Other inputs (Wired directly... No module)
 #define PROBE_PIN                   GPIO_NUM_13
@@ -99,11 +100,11 @@ Socket #5
 // ======== DEFAULT SETTINGS ============
 #    define DEFAULT_STEP_PULSE_MICROSECONDS 5  // $0
 #    define DEFAULT_STEPPER_IDLE_LOCK_TIME  255 // $1 msec (0-254, 255 keeps steppers enabled)
-#    define DEFAULT_DIRECTION_INVERT_MASK   2  // $3 uint8_
+#    define DEFAULT_DIRECTION_INVERT_MASK   6  // $3 uint8_
 #    define DEFAULT_INVERT_LIMIT_PINS       0  // $5 boolean
 #    define DEFAULT_INVERT_PROBE_PIN        1  // $6 boolean
 #    define DEFAULT_STATUS_REPORT_MASK      3  // $10
-#    define DEFAULT_SOFT_LIMIT_ENABLE       0  // $20
+#    define DEFAULT_SOFT_LIMIT_ENABLE       1  // $20
 #    define DEFAULT_HARD_LIMIT_ENABLE       1  // $21
 #    define DEFAULT_HOMING_ENABLE           1  // $22
 #    define DEFAULT_HOMING_DIR_MASK         0  // $23 move positive dir Z, negative X,Y
@@ -113,14 +114,13 @@ Socket #5
 #    define DEFAULT_HOMING_PULLOFF          2.0  // $27 mm
 #    define DEFAULT_HOMING_SQUARED_AXES     bit(Y_AXIS)
 #    define DEFAULT_HOMING_CYCLE_0          bit(Z_AXIS)
-#    define DEFAULT_HOMING_CYCLE_1          bit(X_AXIS)
-#    define DEFAULT_HOMING_CYCLE_2          bit(Y_AXIS)
+#    define DEFAULT_HOMING_CYCLE_1          bit(X_AXIS + Y_AXIS)
 
 // ========== SPINDLE STUFF ====================
 #    define SPINDLE_TYPE SpindleType::_10V
 #    define DEFAULT_SPINDLE_RPM_MIN 3500.0  // $31 rpm
 #    define DEFAULT_SPINDLE_RPM_MAX 25000.0  // $30 rpm
-#    define DEFAULT_SPINDLE_MIN_VALUE 0.0  // $35 Percent of full period (extended set)
+#    define DEFAULT_SPINDLE_MIN_VALUE 10.0  // $35 Percent of full period (extended set)
 #    define DEFAULT_SPINDLE_MAX_VALUE 90.0  // $36 Percent of full period (extended set)
 #    define DEFAULT_SPINDLE_DELAY_SPINUP 1
 #    define DEFAULT_SPINDLE_DELAY_SPINDOWN 1
@@ -132,27 +132,27 @@ Socket #5
 #    define DEFAULT_Z_STEPS_PER_MM 400
 
 // ============ AXIS MAX SPEED =========
-#    define DEFAULT_X_MAX_RATE		7000
-#    define DEFAULT_Y_MAX_RATE		6000
-#    define DEFAULT_Z_MAX_RATE		4000
+#    define DEFAULT_X_MAX_RATE		4500
+#    define DEFAULT_Y_MAX_RATE		4500
+#    define DEFAULT_Z_MAX_RATE		3000
 
 // ============ AXIS ACCELERATION ======
 #    define DEFAULT_X_ACCELERATION 	400
 #    define DEFAULT_Y_ACCELERATION 	400
-#    define DEFAULT_Z_ACCELERATION 	400
+#    define DEFAULT_Z_ACCELERATION 	250
 
 // ========= AXIS MAX TRAVEL ============
 #    define DEFAULT_X_MAX_TRAVEL 	531
 #    define DEFAULT_Y_MAX_TRAVEL 	786
 #    define DEFAULT_Z_MAX_TRAVEL 	100
-#    define DEFAULT_X_HOMING_MPOS   2.0
-#    define DEFAULT_Y_HOMING_MPOS   2.0
-#    define DEFAULT_Z_HOMING_MPOS   2.0
+#    define DEFAULT_X_HOMING_MPOS   0
+#    define DEFAULT_Y_HOMING_MPOS   0
+#    define DEFAULT_Z_HOMING_MPOS   0
 
 // ================ User Analog I/O ==============================
-#    define DEFAULT_USER_MACRO0 "$H"
-#    define DEFAULT_USER_MACRO1 ""
-#    define DEFAULT_USER_MACRO2 ""
+#    define DEFAULT_USER_MACRO0 "$HX"
+#    define DEFAULT_USER_MACRO1 "$HY"
+#    define DEFAULT_USER_MACRO2 "$HZ"
 #    define DEFAULT_USER_MACRO3 "$MD"
 
 // ================ MISCELANEOUS =================================
